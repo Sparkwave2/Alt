@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://ber2lgxjt24en"]
+[gd_scene load_steps=69 format=4 uid="uid://ber2lgxjt24en"]
 
 [ext_resource type="PackedScene" uid="uid://dr58psiyjxqyf" path="res://scenes/copyable/portal.tscn" id="1_la1ru"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_c6w62"]
@@ -120,6 +120,9 @@ light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phrec"]
 size = Vector2(568.869, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgqma"]
+size = Vector2(48, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jjoh"]
 size = Vector2(48, 7)
@@ -424,6 +427,23 @@ supercalifragilisticexpialidocious
 AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRr
 [/font_size][/font][right]Release 9 to close."
 
+[node name="BookTextHiRes" type="RichTextLabel" parent="Camera2D/Control/BookCover/BookBackground"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 578.0
+offset_bottom = 318.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "The legend says:[font=tin.ttf][font_size=19]
+Do some very crazy stuff on the keyboard. I don't even care anymore. This message is just a placeholder. If you see this, you're either doing some datamining or there's a bug in the game that you should report to the developer. This is a text wrapping test:
+supercalifragilisticexpialidocious
+AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRr
+[/font_size][/font][right]Release 9 to close."
+
 [node name="StatusText" type="RichTextLabel" parent="Camera2D/Control"]
 material = SubResource("CanvasItemMaterial_a1nfs")
 layout_mode = 0
@@ -475,8 +495,8 @@ position = Vector2(64, 25)
 position = Vector2(208, -59)
 
 [node name="CollisionShape2D" parent="Water3" index="0"]
-position = Vector2(24, 25.5)
-shape = SubResource("RectangleShape2D_5jjoh")
+position = Vector2(24, 25)
+shape = SubResource("RectangleShape2D_wgqma")
 
 [node name="Water5" parent="." instance=ExtResource("3_4p1ny")]
 position = Vector2(-48, 276)
@@ -535,11 +555,13 @@ book_kind = 1
 position = Vector2(116, 60)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 This is a checkpoint. If you step over it, you will [color=dark_green]activate[/color] it. When it's activated, you can go back here in case you face any harm or get stuck. However, the state of the world will remain the same.[/font_size][/font]"
+book_kind = null
 
 [node name="TutorialBook2" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(220, 60)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 You can't collect coins yet, you will be able to later. For now remember, [color=dark_green]green[/color] books like this one are the common books that simply tell you a tip. There are also [color=blue]blue[/color] books that give you new keybinds. Be on the lookout for them. For now, proceed to the right. ->[/font_size][/font]"
+book_kind = null
 
 [node name="TutorialBook3" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(348, 84)
@@ -559,6 +581,7 @@ position = Vector2(564, 156)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 Seems like there's no way forward. Maybe try going [color=dark_green]down into the canals[/color]? You're quite a resillient cat, you can handle a bit of water.
 Although, maybe check out that book under the ramp first.[/font_size][/font]"
+book_kind = null
 
 [node name="FakeoutBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(500, 180)
@@ -582,16 +605,19 @@ book_kind = 2
 position = Vector2(180, 228)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 As you probably noticed, those platforms are passable from the bottom, but not from the top. The grate on the left hides secrets, but it seems like even your flexible cat body cannot quite fit through. For now, continue exploring this laboratory and you might find some interesting things.[/font_size][/font]"
+book_kind = null
 
 [node name="CoinBookNope" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(236, 36)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 What's wrong with those coins, are they broken? Or maybe they're just simply too big to carry around? Why are they floating anyways? It'd be useful if you had some kind of place to store them all... The chances of finding something like that in this laboratory are slim though.[/font_size][/font]"
+book_kind = null
 
 [node name="EnemyBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(404, 140)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 What are those things? Seems like someone let them out throughout the entire laboratory. You should get rid of them or find some other way to avoid them.[/font_size][/font]"
+book_kind = null
 
 [node name="SwimBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(1396, 340)
@@ -631,12 +657,14 @@ position = Vector2(100, -52)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 There's been some reports that all of the F1 keys from all keyboards in the entire facility have been mysteriously missing. Maybe you can exploit this situation in your fit of mischief.
 Oh, also, you do have the means to get out of here, right? If not, you can always just stay here forever.[/font_size][/font]"
+book_kind = null
 
 [node name="IceBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(1212, 44)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 Who put all this ice here? This laboratory is in a terrible shape...
 This much ice will take forever to melt... If only we had something to melt it away faster...[/font_size][/font]"
+book_kind = null
 
 [node name="LiquidBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(1356, 84)
@@ -644,11 +672,13 @@ book_text = "The legend says:[font=tiny.ttf][font_size=6]
 So you want to achieve the ultimate cat form?
 Yeah?
 In that case, enter this portal.[/font_size][/font]"
+book_kind = null
 
 [node name="LiquidBook2" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(179, -12)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 This special bathing procedure should bring out a special ability in you that will help you on your way.[/font_size][/font]"
+book_kind = null
 
 [node name="LiquidBook3" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(292, -12)
@@ -662,6 +692,7 @@ book_kind = 1
 position = Vector2(1340, -60)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 Fun fact: Honey is very dense, so other liquids might have a difficulty diluting in it.[/font_size][/font]"
+book_kind = null
 
 [node name="SingleWallBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(1132, -172)
@@ -681,6 +712,7 @@ book_kind = 1
 position = Vector2(460, -148)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 This door is greedy. It's so greedy in fact that it won't open unless you have [color=dark_green]50 coins[/color] first. Come back here when you have that many.[/font_size][/font]"
+book_kind = null
 
 [node name="EndingBook" parent="Books" instance=ExtResource("15_7qotm")]
 position = Vector2(524, -148)
@@ -698,6 +730,7 @@ book_kind = 1
 position = Vector2(572, -148)
 book_text = "The legend says:[font=tiny.ttf][font_size=6]
 When it appears, pick it up quickly! But remember to deactivate the F1 reactor first.[/font_size][/font]"
+book_kind = null
 
 [node name="Enemy2" parent="." instance=ExtResource("8_ovw0i")]
 position = Vector2(970, 238)
@@ -741,6 +774,10 @@ checkpoint_id = 6
 [node name="Checkpoint7" parent="." instance=ExtResource("19_qinwi")]
 position = Vector2(1428, 84)
 checkpoint_id = 7
+
+[node name="Checkpoint8" parent="." instance=ExtResource("19_qinwi")]
+position = Vector2(756, 84)
+checkpoint_id = 8
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_bdbw7")
@@ -839,6 +876,17 @@ position = Vector2(-44, 268)
 [node name="CollisionShape2D" parent="Grate2" index="0"]
 position = Vector2(20, 0)
 shape = SubResource("RectangleShape2D_wjqg0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 66.0
+offset_top = -2.0
+offset_right = 106.0
+offset_bottom = 38.0
+scale = Vector2(3, 3)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10_007oq")
+text = "Alt"
 
 [node name="Grate3" parent="." instance=ExtResource("30_klun2")]
 position = Vector2(1332, -52)

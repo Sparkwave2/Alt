@@ -28,6 +28,8 @@ size = Vector2(8, 8)
 
 [node name="Book" type="Area2D"]
 script = ExtResource("1_hlubj")
+book_text = null
+book_kind = null
 green_texture = SubResource("AtlasTexture_vgys2")
 red_texture = SubResource("AtlasTexture_h56pp")
 blue_texture = SubResource("AtlasTexture_6yu4h")

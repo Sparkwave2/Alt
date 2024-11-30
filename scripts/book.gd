@@ -40,6 +40,8 @@ func _on_body_entered(body):
 		body.book_text.text = book_text
 		body.current_book_kind = book_kind
 		body.book_text.text += "\n[right]Release 9 to close."
+		body.book_text_hi_res.text = book_text.replace("tiny", "tin").replace("font_size=6", "font_size=19")
+		body.book_text_hi_res.text += "\n[right]Release 9 to close."
 
 
 func _on_body_exited(body):

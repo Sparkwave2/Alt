@@ -13,6 +13,7 @@ class_name PlayerController
 
 @export var book_ui: ColorRect
 var book_text: RichTextLabel
+var book_text_hi_res: RichTextLabel
 
 var last_tile_touched: Vector2i
 var last_tile_touched_pos: Vector2i
@@ -63,6 +64,8 @@ var hitbox_left: Area2D
 
 var coins: int = 0
 
+var hiresfont: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = get_node("Sprite2D")
@@ -70,6 +73,7 @@ func _ready():
 	hitbox_right = get_node("HitboxRight")
 	hitbox_left = get_node("HitboxLeft")
 	book_text = book_ui.get_node("BookBackground").get_node("BookText")
+	book_text_hi_res = book_ui.get_node("BookBackground").get_node("BookTextHiRes")
 	death_text.hide()
 	
 	jump_sound = get_node("JumpSound")
@@ -327,6 +331,18 @@ func _input(event):
 			display_status("F1 reactor disabled", Color.RED, 1)
 			activate_sound.play()
 		typed_characters += "E"
+		
+	if Input.is_action_just_pressed("hiresfont"):
+		hiresfont = !hiresfont
+		
+	if hiresfont:
+		book_text.hide()
+		book_text_hi_res.show()
+	else:
+		book_text.show()
+		book_text_hi_res.hide()
+		
+		
 		
 func display_status(text: String, color: Color, duration: float):
 	status_text.text = "[color=#"

@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://b06xeqxbncnvm" path="res://EXEPixelPerfect.ttf" id="1_2pmub"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_44m2b"]
 [ext_resource type="FontFile" uid="uid://bphvgonubh2o3" path="res://tiny.ttf" id="1_y3651"]
-[ext_resource type="PackedScene" uid="uid://0y4ufrouf1tg" path="res://scenes/main.tscn" id="2_pdyvl"]
+[ext_resource type="PackedScene" uid="uid://ber2lgxjt24en" path="res://scenes/main.tscn" id="2_pdyvl"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,9 +26,9 @@ color = Color(0, 0, 0, 1)
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 25.0
+offset_top = 16.0
 offset_right = 147.0
-offset_bottom = 84.0
+offset_bottom = 75.0
 theme_override_fonts/normal_font = ExtResource("1_y3651")
 theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
@@ -42,21 +42,21 @@ ericskiff.com/music"
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 72.0
-offset_top = 6.0
 offset_right = 112.0
-offset_bottom = 46.0
+offset_bottom = 40.0
 theme_override_fonts/normal_font = ExtResource("1_2pmub")
 text = "Alt"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 76.0
-offset_right = 144.0
-offset_bottom = 116.0
+offset_left = 2.0
+offset_top = 56.0
+offset_right = 158.0
+offset_bottom = 96.0
 theme_override_fonts/normal_font = ExtResource("1_2pmub")
 bbcode_enabled = true
-text = "[center]Hold 9 (nine) to begin"
+text = "[center]Hold 9 (nine) to begin
+Press 8 to switch to hi res font mode in-game"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 48)
