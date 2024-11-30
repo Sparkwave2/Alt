@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx2x7i4crnt8y"]
+
+[ext_resource type="Script" path="res://scenes/coin.gd" id="1_q2vo8"]
+[ext_resource type="Texture2D" uid="uid://bd6us6yxnoit5" path="res://sprites/sheet16.png" id="2_4wval"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tetvj"]
+size = Vector2(4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u6m4"]
+atlas = ExtResource("2_4wval")
+region = Rect2(40, 8, 16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw3db"]
+size = Vector2(4, 4)
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_q2vo8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tetvj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_0u6m4")
+hframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_tw3db")

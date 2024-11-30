@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgfw34yy4ytcx"]
+
+[ext_resource type="Script" path="res://scenes/ending.gd" id="1_pweku"]
+[ext_resource type="FontFile" uid="uid://bphvgonubh2o3" path="res://tiny.ttf" id="2_u6jwb"]
+[ext_resource type="FontFile" uid="uid://b06xeqxbncnvm" path="res://EXEPixelPerfect.ttf" id="3_3ygkk"]
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pweku")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 163.0
+offset_bottom = 101.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 159.0
+offset_bottom = 84.0
+theme_override_fonts/normal_font = ExtResource("2_u6jwb")
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "[center]You have successfully obtained the extremely powerful F1 key and escaped the facility unscathed. The personnel is very confused, so your mission of mischief has been successful. However, there is more F keys to collect..."
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 5.0
+offset_right = 127.0
+offset_bottom = 45.0
+theme_override_fonts/normal_font = ExtResource("3_3ygkk")
+text = "You win!"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 66.0
+offset_right = 158.0
+offset_bottom = 106.0
+theme_override_fonts/normal_font = ExtResource("3_3ygkk")
+bbcode_enabled = true
+text = "[center]To be contined (hopefully)"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 48)
+zoom = Vector2(8, 8)

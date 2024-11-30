@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2mn3hi3gmpam"]
+
+[ext_resource type="Texture2D" uid="uid://bd6us6yxnoit5" path="res://sprites/sheet16.png" id="1_fagrt"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_sfmeb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsl5x"]
+atlas = ExtResource("1_fagrt")
+region = Rect2(16, 16, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srivn"]
+size = Vector2(8, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swma8"]
+size = Vector2(8, 7)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_sfmeb")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_qsl5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_srivn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_swma8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwuy7usk7pos2"]
+
+[ext_resource type="Script" path="res://scripts/book.gd" id="1_hlubj"]
+[ext_resource type="Texture2D" uid="uid://bd6us6yxnoit5" path="res://sprites/sheet16.png" id="2_oukgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgys2"]
+atlas = ExtResource("2_oukgd")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h56pp"]
+atlas = ExtResource("2_oukgd")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yu4h"]
+atlas = ExtResource("2_oukgd")
+region = Rect2(16, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taa7l"]
+atlas = ExtResource("2_oukgd")
+region = Rect2(24, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7uhv"]
+atlas = ExtResource("2_oukgd")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vmxs"]
+size = Vector2(8, 8)
+
+[node name="Book" type="Area2D"]
+script = ExtResource("1_hlubj")
+green_texture = SubResource("AtlasTexture_vgys2")
+red_texture = SubResource("AtlasTexture_h56pp")
+blue_texture = SubResource("AtlasTexture_6yu4h")
+yellow_texture = SubResource("AtlasTexture_taa7l")
+
+[node name="BookSprite" type="Sprite2D" parent="."]
+z_index = -1
+texture = SubResource("AtlasTexture_x7uhv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4vmxs")
+debug_color = Color(7.70092e-07, 0.64704, 0.22181, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

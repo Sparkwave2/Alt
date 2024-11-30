@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrlrr8mqdjjf"]
+
+[ext_resource type="Script" path="res://scenes/grate.gd" id="1_wdxaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcnsw"]
+
+[node name="Grate" type="StaticBody2D"]
+script = ExtResource("1_wdxaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dcnsw")
