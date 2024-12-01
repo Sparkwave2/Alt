@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://ber2lgxjt24en"]
+[gd_scene load_steps=71 format=4 uid="uid://ber2lgxjt24en"]
 
 [ext_resource type="PackedScene" uid="uid://dr58psiyjxqyf" path="res://scenes/copyable/portal.tscn" id="1_la1ru"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_c6w62"]
@@ -30,6 +30,8 @@
 [ext_resource type="Script" path="res://scenes/coin_door.gd" id="28_cicwl"]
 [ext_resource type="Script" path="res://scenes/f_1_key.gd" id="29_hwvmj"]
 [ext_resource type="PackedScene" uid="uid://cjrlrr8mqdjjf" path="res://scenes/copyable/grate.tscn" id="30_klun2"]
+[ext_resource type="PackedScene" uid="uid://cipt6pcxb4fbc" path="res://scenes/bad_ending.tscn" id="30_rjswc"]
+[ext_resource type="PackedScene" uid="uid://dgfw34yy4ytcx" path="res://scenes/good_ending.tscn" id="31_utfyd"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ps35v"]
 diffuse_texture = ExtResource("2_wlxig")
@@ -837,6 +839,8 @@ shape = SubResource("RectangleShape2D_0mygp")
 position = Vector2(600, -160)
 script = ExtResource("29_hwvmj")
 player = NodePath("../Player")
+bad_ending = ExtResource("30_rjswc")
+good_ending = ExtResource("31_utfyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="F1 Key"]
 texture = SubResource("AtlasTexture_2y66d")
