@@ -9,6 +9,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_key_pressed(KEY_L):
+	if Input.is_physical_key_pressed(KEY_L):
 		get_tree().change_scene_to_packed(main_scene)
 	pass

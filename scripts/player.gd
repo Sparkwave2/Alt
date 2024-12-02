@@ -66,6 +66,8 @@ var coins: int = 0
 
 var hiresfont: bool = false
 
+var fullscreen: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite = get_node("Sprite2D")
@@ -90,11 +92,11 @@ func _process(delta):
 		smoothing = 0
 	elif jump_cooldown > 0:
 		smoothing = 1
-	elif Input.is_key_pressed(KEY_Q) and not Input.is_key_pressed(KEY_E):
+	elif Input.is_physical_key_pressed(KEY_Q) and not Input.is_physical_key_pressed(KEY_E):
 		movement_vector = Vector2(-1, 0)
 		sprite.flip_h = true
 		smoothing = 0.2
-	elif Input.is_key_pressed(KEY_E) and not Input.is_key_pressed(KEY_Q):
+	elif Input.is_physical_key_pressed(KEY_E) and not Input.is_physical_key_pressed(KEY_Q):
 		movement_vector = Vector2(1, 0)
 		sprite.flip_h = false
 		smoothing = 0.2
@@ -113,7 +115,7 @@ func _process(delta):
 	else:
 		light.enabled = false
 		
-	if on_book and Input.is_key_pressed(KEY_9) and !dead:
+	if on_book and Input.is_physical_key_pressed(KEY_9) and !dead:
 		book_ui.show()
 		match current_book_kind:
 			Book.BookKind.GREEN:
@@ -133,6 +135,14 @@ func _process(delta):
 		coin_text.show()
 	else:
 		coin_text.hide()
+		
+	if Input.is_action_just_pressed("fullscreen"):
+		if fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		fullscreen = !fullscreen
+		
 	
 func _physics_process(delta):
 	
@@ -173,12 +183,12 @@ func _physics_process(delta):
 		
 	# Water swimming
 	if in_water and !dead:
-		if Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_U):
+		if Input.is_physical_key_pressed(KEY_CTRL) and Input.is_physical_key_pressed(KEY_U):
 			jumpiness = 10
 			velocity.y += -100
 		
 	# Do a jump based on the jumpiness
-	if Input.is_key_pressed(KEY_TAB) and jumpiness > 0 and !dead and jump_unlocked:
+	if Input.is_physical_key_pressed(KEY_TAB) and jumpiness > 0 and !dead and jump_unlocked:
 		velocity.y += -100
 		if jumpiness == 10:
 			jump_sound.play()
@@ -192,13 +202,13 @@ func _physics_process(delta):
 		
 	# Wall jump
 	if is_on_wall_only():
-		if Input.is_key_pressed(KEY_SHIFT) and Input.is_key_pressed(KEY_W) and !dead:
+		if Input.is_physical_key_pressed(KEY_SHIFT) and Input.is_physical_key_pressed(KEY_W) and !dead:
 			jump_sound.play()
 			jumpiness = 10
 			jumpphase = 1
 			jump_cooldown = 15
 			# Single wall jump override
-			if !Input.is_key_pressed(KEY_0):
+			if !Input.is_physical_key_pressed(KEY_0):
 				if get_wall_normal().x > 0.1:
 					movement_vector = Vector2(10, 0)
 				if get_wall_normal().x < -0.1:
@@ -210,7 +220,7 @@ func _physics_process(delta):
 					movement_vector = Vector2(-0.5, 0)
 		
 	# Also reset the jumpphase while holding jump, after already having checked it
-	if Input.is_key_pressed(KEY_TAB) and jumpiness > 0 and !dead and jump_unlocked:
+	if Input.is_physical_key_pressed(KEY_TAB) and jumpiness > 0 and !dead and jump_unlocked:
 		jumpphase = 1
 		
 	# If hit the ceiling with your head, stop ascending immediately
@@ -224,13 +234,13 @@ func _physics_process(delta):
 	
 	# Ladder controls
 	if on_ladder and !dead:
-		if Input.is_key_pressed(KEY_Z):
-			if Input.is_key_pressed(KEY_W):
+		if Input.is_physical_key_pressed(KEY_Z):
+			if Input.is_physical_key_pressed(KEY_W):
 				velocity.y = -50
-			if Input.is_key_pressed(KEY_S):
+			if Input.is_physical_key_pressed(KEY_S):
 				velocity.y = 50
 				
-		if Input.is_key_pressed(KEY_M):
+		if Input.is_physical_key_pressed(KEY_M):
 			jumpiness = 10
 			
 	match last_tile_touched:
@@ -243,7 +253,7 @@ func _physics_process(delta):
 	velocity.y += 400 * delta
 	
 	# Disable falling here once again when being on ladder and not climbing down
-	if on_ladder and velocity.y > 0 and !(Input.is_key_pressed(KEY_Z) and Input.is_key_pressed(KEY_S)):
+	if on_ladder and velocity.y > 0 and !(Input.is_physical_key_pressed(KEY_Z) and Input.is_physical_key_pressed(KEY_S)):
 		velocity.y = 0
 	
 	# Apply player movement
@@ -264,7 +274,7 @@ func _physics_process(delta):
 		velocity = velocity * 2
 		
 func _input(event):
-	if Input.is_action_pressed("rightalt") and Input.is_key_pressed(KEY_K) and Input.is_key_pressed(KEY_L) and Input.is_action_just_pressed("light"):
+	if Input.is_action_pressed("rightalt") and Input.is_physical_key_pressed(KEY_K) and Input.is_physical_key_pressed(KEY_L) and Input.is_action_just_pressed("light"):
 		is_light_active = !is_light_active
 		if is_light_active:
 			display_status("Light On", Color.LIME_GREEN, 1)
@@ -273,7 +283,7 @@ func _input(event):
 			display_status("Light Off", Color.RED, 1)
 			activate_sound.play()
 		
-	if Input.is_key_pressed(KEY_BRACKETLEFT) and Input.is_key_pressed(KEY_BRACKETRIGHT) and Input.is_action_pressed("leftshift") and Input.is_action_just_pressed("wallet"):
+	if Input.is_physical_key_pressed(KEY_BRACKETLEFT) and Input.is_physical_key_pressed(KEY_BRACKETRIGHT) and Input.is_action_pressed("leftshift") and Input.is_action_just_pressed("wallet"):
 		is_wallet_open = !is_wallet_open
 		if is_wallet_open:
 			display_status("Wallet is now open", Color.LIME_GREEN, 1)
