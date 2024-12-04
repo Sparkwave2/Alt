@@ -18,7 +18,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player.f1_unlocked and Input.is_physical_key_pressed(KEY_PERIOD) and Input.is_physical_key_pressed(KEY_COMMA) and Input.is_physical_key_pressed(KEY_SPACE) and Input.is_physical_key_pressed(KEY_LEFT) and Input.is_action_pressed("rightalt") and Input.is_action_pressed("windowskey"):
+	if player.f1_unlocked and Input.is_physical_key_pressed(KEY_PERIOD) and Input.is_physical_key_pressed(KEY_COMMA) and Input.is_physical_key_pressed(KEY_SPACE) and Input.is_physical_key_pressed(KEY_LEFT) and Input.is_action_pressed("rightalt"):
 		show()
 		hitbox.disabled = false
 		
